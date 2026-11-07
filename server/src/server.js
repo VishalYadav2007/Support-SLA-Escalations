@@ -6,11 +6,11 @@ const { connectDB } = require('./config/db');
 const mongoose = require('mongoose');
 
 const app = createApp();
-const port = Number(process.env.PORT) || 5000;
+const PORT = process.env.PORT || 5000;
 
 (async () => {
   await connectDB(process.env.MONGODB_URI);
-  const server = app.listen(port, () => console.log('Server listening on port ' + port));
+  const server = app.listen(PORT, () => console.log('Server listening on port ' + PORT));
   const shutdown = () => {
     server.close(async () => {
       await mongoose.connection.close();
